@@ -84,7 +84,8 @@ function minifyTtf(contents, opts) {
     var ttfobj = contents;
 
     if (Buffer.isBuffer(contents)) {
-        ttfobj = new TTFReader(opts).read(b2ab(contents));
+        // ttfobj = new TTFReader(opts).read(b2ab(contents));
+        ttfobj = new TTFReader({hinting: opts.hinting, compound2simple: opts.compound2simple}).read(b2ab(contents));
     }
 
     var miniObj = minifyFontObject(
@@ -123,6 +124,7 @@ module.exports = function (opts) {
     // prepare subset
     var subsetText = util.getSubsetText(opts);
     opts.subset = util.string2unicodes(subsetText);
+    opts.subset.push(32);  //add space
 
 
     return through.ctor({
