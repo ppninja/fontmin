@@ -151,19 +151,11 @@ Fontmin.plugins = [
     'svgs2ttf',
     'otf2ttf'
 ];
-Fontmin['glyph'] = require('./plugins/glyph');
-Fontmin['ttf2eot'] = require('./plugins/ttf2eot');
-Fontmin['ttf2woff'] = require('./plugins/ttf2woff');
-Fontmin['ttf2svg'] = require('./plugins/ttf2svg');
-Fontmin['css'] = require('./plugins/css');
-Fontmin['svg2ttf'] = require('./plugins/svg2ttf');
-Fontmin['svgs2ttf'] = require('./plugins/svgs2ttf');
-Fontmin['otf2ttf'] = require('./plugins/otf2ttf');
 
-// // export pkged plugins
-// Fontmin.plugins.forEach(function (plugin) {
-//     Fontmin[plugin] = require('./plugins/' + plugin);
-// });
+// export pkged plugins
+Fontmin.plugins.forEach(function (plugin) {
+    Fontmin[plugin] = require('./plugins/' + plugin);
+});
 
 /**
  * Module exports
